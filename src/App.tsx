@@ -431,8 +431,9 @@ function BirthdayPage() {
       <div className="white-bow" />
 
       <p className="left-note">
-        Happy birthday my love. You bring a soft kind of magic to every day, and I hope today wraps
-        you in calm moments, warm laughs, and the sweetest kind of peace.
+        Today is your special day, Sneha ❤️ A day to celebrate the amazing person you are. Thank you
+        for all the random conversations, the endless laughs, silly moments, and beautiful memories
+        we have created together.
       </p>
 
       {/* Camera card with personal photo */}
@@ -443,13 +444,14 @@ function BirthdayPage() {
       </div>
 
       <div className="birthday-title">
-        <span>happy</span>
-        <strong>Birthday</strong>
+        <span>Happy Birthday</span>
+        <strong>Sneha ✨</strong>
       </div>
 
       <p className="right-note">
-        May this year be full of little wins, warm conversations and moments that remind you just
-        how loved you are
+        Some people make life more beautiful just by being there, and you are one of those people. I
+        hope this year brings you unlimited smiles, success, happiness and everything your heart
+        wishes for. Keep shining and always stay the wonderful person you are ✨
       </p>
     </div>
   );
@@ -469,11 +471,6 @@ function WishPage({
   const [showSmoke, setShowSmoke] = useState(false);
   const [showSparkles, setShowSparkles] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [micListening, setMicListening] = useState(false);
-  const audioCtxRef = useRef<AudioContext | null>(null);
-  const analyserRef = useRef<AnalyserNode | null>(null);
-  const streamRef = useRef<MediaStream | null>(null);
-  const rafRef = useRef<number>(0);
 
   const sparkles = useMemo(() => makeSparkles(16), []);
   const confetti = useMemo(() => makeConfetti(30), []);
@@ -511,69 +508,6 @@ function WishPage({
     setTimeout(() => setShowSparkles(false), 1400);
   }, [candleOut, setCandleOut]);
 
-  /* ── Microphone blow detection ── */
-  useEffect(() => {
-    if (candleOut) return;
-
-    let active = true;
-
-    async function startMic() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        if (!active) {
-          stream.getTracks().forEach((t) => t.stop());
-          return;
-        }
-        streamRef.current = stream;
-        const ctx = new AudioContext();
-        audioCtxRef.current = ctx;
-        const analyser = ctx.createAnalyser();
-        analyserRef.current = analyser;
-        analyser.fftSize = 512;
-        analyser.smoothingTimeConstant = 0.4;
-        const source = ctx.createMediaStreamSource(stream);
-        source.connect(analyser);
-        setMicListening(true);
-
-        const data = new Uint8Array(analyser.frequencyBinCount);
-
-        const check = () => {
-          if (!active) return;
-          analyser.getByteFrequencyData(data);
-          // Detect blow: high mid-frequency energy (1kHz–4kHz range)
-          const binStart = Math.floor((1000 / ctx.sampleRate) * analyser.fftSize);
-          const binEnd = Math.floor((4000 / ctx.sampleRate) * analyser.fftSize);
-          let sum = 0;
-          for (let i = binStart; i < binEnd; i++) sum += data[i];
-          const avg = sum / (binEnd - binStart);
-
-          if (avg > 60) {
-            // Blow detected!
-            blowCandle();
-            cleanup();
-            return;
-          }
-          rafRef.current = requestAnimationFrame(check);
-        };
-        rafRef.current = requestAnimationFrame(check);
-      } catch {
-        // Microphone denied — silent fallback, user can still click
-        setMicListening(false);
-      }
-    }
-
-    function cleanup() {
-      active = false;
-      cancelAnimationFrame(rafRef.current);
-      streamRef.current?.getTracks().forEach((t) => t.stop());
-      audioCtxRef.current?.close();
-      setMicListening(false);
-    }
-
-    startMic();
-    return cleanup;
-  }, [candleOut, blowCandle]);
-
   return (
     <div className="wish-page burgundy-soft">
       {/* Left copy */}
@@ -583,17 +517,12 @@ function WishPage({
           <br />A WISH
         </h2>
         <button className="blow-link" type="button" onClick={blowCandle}>
-          blow your candle
+          Blow Candle
           <span>↪</span>
         </button>
-        {micListening && !candleOut && (
-          <p style={{ fontSize: '0.8rem', opacity: 0.7, marginTop: 8, fontFamily: 'var(--font-body)' }}>
-            🎤 or actually blow!
-          </p>
-        )}
         <p>
-          I pray that all your dreams come true and that you are always happy. I truly want to see
-          you smile everyday
+          I hope all your dreams come true and that you are always happy. I truly want to see you
+          smile everyday
         </p>
       </div>
 
@@ -735,6 +664,7 @@ function WishPage({
 ───────────────────────────────────────────── */
 function MemoriesPage() {
   // Using p3–p6 for polaroids (personal photos)
+  // Using p3–p6 for polaroids (personal photos)
   const photos: Array<{ src: string; caption: string }> = [
     { src: '/assets/p3.jpeg', caption: 'us 🤍' },
     { src: '/assets/p4.jpeg', caption: 'always' },
@@ -758,7 +688,7 @@ function MemoriesPage() {
       <div className="memory-doodles">
         <span className="heart-doodle">♡</span>
         <span className="flower-doodle">✿</span>
-        <span className="love-doodle">love</span>
+        <span className="love-doodle">friends</span>
         <span className="star-doodle">☆</span>
       </div>
       <h2>Moments I Cherish With You</h2>
@@ -773,28 +703,25 @@ function LetterPage() {
   return (
     <div className="letter-page striped">
       <div className="letter-paper">
-        <h2>To the love of my life...</h2>
+        <h2>To My Amazing Best Friend Sneha 🤍</h2>
+        <p>Happy Birthday Sneha ❤️</p>
         <p>
-          To the man who has stolen my heart (and never returned it). Happy birthday baby!! There
-          are no amount of words that can tell you how I feel, no amount of time is ever enough with
-          you. You feel like home. You make my world feel softer. Safer. Real.
+          Some friendships become special because of the little things. The random talks, the
+          endless laughs, the crazy moments, and all the memories that become unforgettable.
         </p>
         <p>
-          I will always believe that God knew I needed you. Someone safe. Someone kind. Someone who
-          sees me fully and still chooses me.
+          Thank you for always being such a kind and wonderful person. You make normal days better
+          and simple moments more special.
         </p>
         <p>
-          The little me always dreamed to have someone like you. You have become a better person for
-          you, and I hope you know how much I appreciate everything you do for me, every day no
-          matter how tired you are.
-        </p>
-        <p>
-          And I hope in every smile, every night, every laugh and every moment together you feel my
-          love and know just how much you mean to me.
+          I hope your life is always filled with happiness, success, peace and countless reasons to
+          smile. Never change the beautiful person you are.
         </p>
         <p className="letter-sign">
-          I love you chinnu
+          Keep smiling always ✨
           <br />
+          Happy Birthday Sneha 🤍
+            <br />
           (you'll always be my 11:11)
         </p>
       </div>

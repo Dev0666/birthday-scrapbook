@@ -247,7 +247,7 @@ function PasscodeScene({
       <div className="torn-paper" />
 
       <div className="heart-frame">
-        <img src="/assets/p1.jpeg" alt="A cherished memory" />
+        <img src="/assets/r1.jpeg" alt="A cherished memory" />
         <span className="lace-dot dot-a" />
         <span className="lace-dot dot-b" />
         <span className="lace-dot dot-c" />
@@ -431,21 +431,19 @@ function BirthdayPage() {
       <div className="white-bow" />
 
       <p className="left-note">
-        Today is your special day, Sneha ❤️ A day to celebrate the amazing person you are. Thank you
-        for all the random conversations, the endless laughs, silly moments, and beautiful memories
-        we have created together.
+        Today is your special day, Ravina ❤️ A day to celebrate the amazing person you are. Wishing you a year filled with happiness, new experiences, and moments that make you smile.
       </p>
 
       {/* Camera card with personal photo */}
       <div className="camera-card">
         <span className="camera-lens" />
         <span className="camera-dial" />
-        <img src="/assets/p2.jpeg" alt="A beautiful memory" />
+        <img src="/assets/r2.jpeg" alt="A beautiful memory" />
       </div>
 
       <div className="birthday-title">
         <span>Happy Birthday</span>
-        <strong>Sneha ✨</strong>
+        <strong>Ravina ✨</strong>
       </div>
 
       <p className="right-note">
@@ -666,10 +664,10 @@ function MemoriesPage() {
   // Using p3–p6 for polaroids (personal photos)
   // Using p3–p6 for polaroids (personal photos)
   const photos: Array<{ src: string; caption: string }> = [
-    { src: '/assets/p3.jpeg', caption: 'us 🤍' },
-    { src: '/assets/p4.jpeg', caption: 'always' },
-    { src: '/assets/p5.jpeg', caption: 'my fav' },
-    { src: '/assets/p6.jpeg', caption: 'forever' },
+    { src: '/assets/r3.jpeg', caption: '🧸' },
+    { src: '/assets/r4.jpeg', caption: '🌟' },
+    { src: '/assets/r5.jpeg', caption: '🦋' },
+    { src: '/assets/r6.jpeg', caption: '🎀' },
   ];
 
   return (
@@ -691,7 +689,7 @@ function MemoriesPage() {
         <span className="love-doodle">friends</span>
         <span className="star-doodle">☆</span>
       </div>
-      <h2>Moments I Cherish With You</h2>
+      <h2>Your Vibe In Frames</h2>
     </div>
   );
 }
@@ -703,15 +701,14 @@ function LetterPage() {
   return (
     <div className="letter-page striped">
       <div className="letter-paper">
-        <h2>To My Amazing Best Friend Sneha 🤍</h2>
-        <p>Happy Birthday Sneha ❤️</p>
+        <h2>To My Good Friend Ravina 🤍</h2>
+        <p>Happy Birthday Ravina ❤️</p>
         <p>
-          Some friendships become special because of the little things. The random talks, the
-          endless laughs, the crazy moments, and all the memories that become unforgettable.
+          Some friendships make things a little easier. Your positive nature and friendly vibe helped me become more open and comfortable. 
+          Thank you for being a good friend and always being yourself.
         </p>
         <p>
-          Thank you for always being such a kind and wonderful person. You make normal days better
-          and simple moments more special.
+          Thank you for always being such a kind and wonderful person. Birthdays are always a reminder to enjoy the little moments.
         </p>
         <p>
           I hope your life is always filled with happiness, success, peace and countless reasons to
@@ -720,16 +717,15 @@ function LetterPage() {
         <p className="letter-sign">
           Keep smiling always ✨
           <br />
-          Happy Birthday Sneha 🤍
+          Happy Birthday Ravina 🤍
             <br />
-          (you'll always be my 11:11)
         </p>
       </div>
 
       <div className="photo-stack">
         <div className="script-paper" />
         <figure>
-          <img src="/assets/p7.jpeg" alt="A precious memory" />
+          <img src="/assets/r8.jpeg" alt="A precious memory" />
         </figure>
         <div className="wax-seal">♥</div>
         <span className="small-camera" />
@@ -747,16 +743,16 @@ function FinalPage() {
     <div className="final-page cream-final">
       <span className="tiny-heart">♥</span>
       <h2>
-        I WANT TO ANNOY YOU
-        <span>for the rest of your life</span>
+         NEVER
+        <span>lose your spark</span>
       </h2>
 
       {/* Polaroid style frame for p8.jpeg */}
       <div className="final-photo-frame">
         <span className="tape tape-left" />
         <span className="tape tape-right" />
-        <img src="/assets/p8.jpeg" alt="Our forever memory" />
-        <figcaption className="final-caption">forever & always 🤍</figcaption>
+        <img src="/assets/r7.jpeg" alt="Our forever memory" />
+        <figcaption className="final-caption">cheers to you 🤍</figcaption>
       </div>
 
       <div className="bear-left">
